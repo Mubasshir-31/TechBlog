@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechBlog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='techblog.png') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='techblog.svg') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+.logo:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+:root {
+  --bg: #f8fafc;
+  --text: #222;
+  --nav-bg: #f8fafc;
+  --nav-link: #2563eb;
+  --card-bg: #fff;
+  --input-bg: #f1f5f9;
+  --input-border: #bae6fd;
+  --btn-bg: linear-gradient(to right,#60a5fa,#2563eb);
+  --btn-text: #fff;
+}
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #f8fafc;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+.container, .max-w-2xl, .max-w-lg, .max-w-xl {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.card, .bg-white {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  border-radius: 1rem;
+  background: #fff;
+}
+.btn, button, .navbar a, nav a {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.btn:hover, button:hover, .navbar a:hover, nav a:hover {
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  filter: brightness(0.97);
+}
+input, textarea {
+  border-radius: 0.5rem;
+  border: 1px solid #bae6fd;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  background: #f1f5f9;
+  color: #222;
+  transition: border 0.2s;
+}
+input:focus, textarea:focus {
+  border-color: #2563eb;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.7rem;
+}
+nav, .navbar {
+  box-shadow: 0 2px 8px rgba(37,99,235,0.04);
+  margin-bottom: 1.5rem;
+}
+nav a, .navbar a {
+  color: var(--nav-link);
+}
+.card, .bg-white {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+}
+input, textarea {
+  background: var(--input-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--input-border) !important;
+}
+.btn, button {
+  background: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+}
+body.dark-mode {
+  --bg: #18181b;
+  --text: #f3f4f6;
+  --nav-bg: #23232a;
+  --nav-link: #60a5fa;
+  --card-bg: #23232a;
+  --input-bg: #23232a;
+  --input-border: #334155;
+  --btn-bg: linear-gradient(to right,#2563eb,#1e40af);
+  --btn-text: #fff;
+}
+body.dark-mode .card, body.dark-mode .bg-white {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+}
+body.dark-mode input, body.dark-mode textarea {
+  background: var(--input-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--input-border) !important;
+}
+body.dark-mode .btn, body.dark-mode button {
+  background: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+}
+body.dark-mode nav, body.dark-mode .navbar {
+  background: var(--nav-bg);
+}
+body.dark-mode nav a, body.dark-mode .navbar a {
+  color: var(--nav-link);
+}
+</style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-white min-h-screen text-slate-800 flex flex-col">
+  <nav class="flex items-center gap-6 px-8 py-4 bg-white/90 shadow-md sticky top-0 z-50 rounded-b-2xl">
+    <a href="/" class="logo mr-8 flex items-center" style="background:transparent;box-shadow:none;">
+      <img src="{{ url_for('static', filename='techblog.svg') }}" alt="TechBlog Logo" style="width:140px;height:50px;object-fit:cover; border-radius: 18px;">
+    </a>
+    <div class="hidden md:flex gap-6 flex-1">
+      <a href="/" class="px-3 py-1 rounded-lg font-semibold hover:bg-blue-100 transition {% if active_page == 'home' %}bg-blue-100 text-blue-700{% endif %}">Home</a>
+      <a href="/blog" class="px-3 py-1 rounded-lg font-semibold hover:bg-blue-100 transition {% if active_page == 'blog' %}bg-blue-100 text-blue-700{% endif %}">Blog</a>
+      <a href="/about" class="px-3 py-1 rounded-lg font-semibold hover:bg-blue-100 transition {% if active_page == 'about' %}bg-blue-100 text-blue-700{% endif %}">About</a>
+      <a href="/contact" class="px-3 py-1 rounded-lg font-semibold hover:bg-blue-100 transition {% if active_page == 'contact' %}bg-blue-100 text-blue-700{% endif %}">Contact</a>
+    </div>
+    {# Desktop Create button, only on Blog page #}
+    {% if active_page == 'blog' %}
+    <a href="/create" class="ml-auto bg-gradient-to-r from-blue-400 to-blue-700 text-white px-5 py-2 rounded-lg font-bold shadow hover:from-blue-500 hover:to-blue-800 transition hidden md:inline-block">Create</a>
+    {% endif %}
+    <button id="hamburger" class="md:hidden text-3xl text-blue-600 cursor-pointer ml-auto focus:outline-none bg-blue-50 hover:bg-blue-100 rounded-lg p-2 transition-all duration-200 shadow-sm" aria-label="Open menu">&#9776;</button>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-white/95 z-50 flex flex-col items-center justify-center gap-8 text-xl font-semibold text-blue-700 hidden transition-all duration-300">
+    <a href="/" class="hover:text-blue-900 {% if active_page == 'home' %}text-blue-900 font-bold{% endif %}">Home</a>
+    <a href="/blog" class="hover:text-blue-900 {% if active_page == 'blog' %}text-blue-900 font-bold{% endif %}">Blog</a>
+    <a href="/about" class="hover:text-blue-900 {% if active_page == 'about' %}text-blue-900 font-bold{% endif %}">About</a>
+    <a href="/contact" class="hover:text-blue-900 {% if active_page == 'contact' %}text-blue-900 font-bold{% endif %}">Contact</a>
+    {% if active_page == 'blog' %}
+    <a href="/create" class="bg-gradient-to-r from-blue-400 to-blue-700 text-white px-5 py-2 rounded-lg font-bold shadow hover:from-blue-500 hover:to-blue-800 transition">Create</a>
+    {% endif %}
+    <button id="closeMenu" class="absolute top-6 right-8 text-4xl text-blue-600 focus:outline-none bg-blue-50 hover:bg-blue-100 rounded-lg p-2 transition-all duration-200 shadow-sm" aria-label="Close menu">&times;</button>
+  </div>
+  <main class="flex-1 max-w-5xl mx-auto px-4 py-8 w-full">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="max-w-xl mx-auto mt-4">
+          {% for category, message in messages %}
+            <div class="mb-2 p-2 rounded bg-green-100 text-green-800">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="bg-gradient-to-r from-blue-700 to-blue-500 text-white text-center py-6 rounded-t-2xl shadow-inner mt-12 w-full">
+    <div class="mb-1">&copy; {{ current_year }} TechBlog. All rights reserved.</div>
+    <div><a href="/contact" class="underline font-semibold text-blue-100 hover:text-white">Contact</a></div>
+  </footer>
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+    // Optional: close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+    // Nav scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 10) {
+        nav.classList.add('backdrop-blur-md', 'bg-white/80');
+      } else {
+        nav.classList.remove('backdrop-blur-md', 'bg-white/80');
+      }
+    });
+  </script>
+</body>
+</html> 

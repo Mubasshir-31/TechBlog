@@ -1,0 +1,16 @@
+body, .font-inter { font-family: 'Inter', Arial, sans-serif; }
+body {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+}
+.nav-anim { position: relative; }
+.footer-icon { transition: color 0.2s; }
+.footer-icon:hover { color: #38BDF8 !important; }
+#scrollTopBtn { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; background: #1E293B; color: #fff; border-radius: 9999px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+#scrollTopBtn.show { opacity: 1; pointer-events: auto; }
+.card { background: #fff; border: 1.5px solid #bae6fd; }
+.btn-anim { background: #38BDF8; color: #fff; border-radius: 0.5rem; border: 1.5px solid #38BDF8; }
+.btn-anim:hover { background: #1E293B; color: #38BDF8; border-color: #1E293B; }
+.rounded-navbar { border-radius: 0 0 1rem 1rem; }
+.rounded-footer { border-radius: 1rem 1rem 0 0; }
+.fade-success { opacity: 0; transition: opacity 0.5s; }
+.fade-success.show { opacity: 1; } 

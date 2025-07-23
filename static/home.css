@@ -1,0 +1,109 @@
+body, .font-inter { font-family: 'Inter', Arial, sans-serif; }
+body {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+}
+.nav-anim { position: relative; }
+.footer-icon { transition: color 0.2s; }
+.footer-icon:hover { color: #38BDF8 !important; }
+#scrollTopBtn { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; background: #1E293B; color: #fff; border-radius: 9999px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+#scrollTopBtn.show { opacity: 1; pointer-events: auto; }
+.card { background: #fff; border: 1.5px solid #bae6fd; }
+.btn-anim { background: #38BDF8; color: #fff; border-radius: 0.5rem; border: 1.5px solid #38BDF8; }
+.btn-anim:hover { background: #1E293B; color: #38BDF8; border-color: #1E293B; }
+.rounded-navbar { border-radius: 0 0 1rem 1rem; }
+.rounded-footer { border-radius: 1rem 1rem 0 0; }
+#contactFormHome { max-width: 340px; }
+#contactFormHome label {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+#contactFormHome input,
+#contactFormHome textarea {
+  font-size: 0.95rem;
+  padding: 0.4rem 0.6rem;
+}
+#contactFormHome button {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+}
+html {
+  scroll-behavior: smooth;
+}
+section, .card, nav, footer {
+  transition: box-shadow 0.3s, background 0.3s, border 0.3s, color 0.3s, opacity 0.5s, transform 0.3s;
+}
+.section-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.section-fade.visible {
+  opacity: 1;
+  transform: none;
+}
+.btn-anim {
+  position: relative;
+  overflow: hidden;
+}
+.btn-anim::after {
+  content: '';
+  position: absolute;
+  left: -75%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(56,189,248,0.15) 0%, rgba(255,255,255,0.25) 100%);
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+  pointer-events: none;
+}
+.btn-anim:hover::after, .btn-anim:focus::after {
+  left: 120%;
+}
+.btn-anim:active {
+  transform: scale(0.97);
+}
+.card {
+  box-shadow: 0 2px 8px #38BDF822, 0 1.5px 4px #1E293B11;
+}
+.card:hover, .card:focus-within {
+  box-shadow: 0 8px 32px #38BDF822, 0 2px 8px #1E293B11;
+  transform: scale(1.03) translateY(-2px);
+}
+nav {
+  background: transparent !important;
+  box-shadow: 0 2px 16px 0 #1E293B22;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+#scrollTopBtn {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+#scrollTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+#scrollTopBtn:focus {
+  outline: 2px solid #38BDF8;
+  outline-offset: 2px;
+}
+input:focus, textarea:focus, select:focus, button:focus, a:focus {
+  outline: 2px solid #38BDF8;
+  outline-offset: 2px;
+}
+.scrollspy-link.active {
+  background: #bae6fd;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  color: #1E293B;
+}
+#scrollspy-nav {
+  transition: background 0.3s;
+}
+#scrollspy-nav.scrolled {
+  background: linear-gradient(90deg, #1E293B 0%, #2563EB 100%);
+} 

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-12 min-h-[70vh] bg-blue-50">
+  <div class="max-w-4xl mx-auto px-4">
+    <h1 class="text-3xl font-extrabold mb-4 text-blue-700">About This Blog Website</h1>
+    <p class="text-lg text-slate-700 mb-6">
+      🧠 <b>About Us</b><br>
+      Welcome to TechBlog, your trusted hub for the latest insights in technology, software development, and digital innovation.<br><br>
+      We’re a team of tech enthusiasts, developers, and curious minds passionate about simplifying complex topics and bringing you fresh, relevant, and actionable content.<br>
+      Whether it's the newest frameworks, coding best practices, AI tools, DevOps strategies, or automation tips—we cover it all, in real time.<br><br>
+      Our goal is to make tech learning accessible, practical, and up-to-date for students, professionals, and innovators alike.<br><br>
+      🧩 <b>Why Follow Us?</b><br>
+      <ul class="list-disc list-inside ml-6 mt-2">
+        <li>Regular blog updates powered by automation</li>
+        <li>Clean and responsive user experience</li>
+        <li>Deep dives into tools like Python, Flask, MongoDB, Docker, and more</li>
+        <li>Written by developers, for developers</li>
+      </ul>
+      <br>
+      Join our community, explore our blogs, and stay ahead in this fast-moving tech world.
+    </p>
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <svg class="w-12 h-12 text-blue-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 1.343 3 3 3 3-1.343 3-3zm0 0c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3zm-6 8v-1a4 4 0 014-4h4a4 4 0 014 4v1"/>
+        </svg>
+        <h2 class="font-bold text-lg mb-2 text-blue-700">Our Team</h2>
+        <p class="text-slate-600 text-center">A passionate group of tech enthusiasts, writers, and developers dedicated to sharing knowledge and building community.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <svg class="w-12 h-12 text-blue-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m4 0h-1v4h-1m-4 0h1v-4h1m-4 0h1v4h1"/>
+        </svg>
+        <h2 class="font-bold text-lg mb-2 text-blue-700">Our Values</h2>
+        <p class="text-slate-600 text-center">We believe in open access to information, creativity, and the power of community-driven learning.</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl shadow p-8 flex flex-col items-center">
+      <h2 class="text-2xl font-bold mb-2 text-blue-700">Meet the Author</h2>
+      <div class="flex flex-wrap gap-8 justify-center mt-4">
+        <div class="flex flex-col items-center">
+          <img src="/static/mubasshir-khan.jpg" alt="Mubasshir Khan" class="w-20 h-20 rounded-full shadow mb-2 object-cover">
+          <div class="font-semibold text-blue-700">Mubasshir Khan</div>
+          <div class="text-slate-500 text-sm">Author</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

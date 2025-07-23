@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-12 min-h-[60vh] flex items-center justify-center bg-blue-50">
+  <div class="max-w-lg w-full bg-white p-8 rounded-2xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-2 text-blue-700">Contact Us</h1>
+    <p class="mb-1 text-slate-700">Got a bug to report, an idea to share, or just want to connect? Hit us up through the form —</p>
+    <p class="mb-6 text-blue-600 text-sm">We’ll respond faster than a deploy</p>
+    <form id="contactForm" method="post" action="/contact" aria-label="Contact form" class="space-y-4">
+      <div>
+        <label for="name" class="block font-semibold text-slate-700 mb-1">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full border border-blue-200 rounded px-3 py-2 focus:outline-none focus:border-blue-500 bg-blue-50 placeholder-slate-400">
+      </div>
+      <div>
+        <label for="email" class="block font-semibold text-slate-700 mb-1">Email address</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required class="w-full border border-blue-200 rounded px-3 py-2 focus:outline-none focus:border-blue-500 bg-blue-50 placeholder-slate-400">
+      </div>
+      <div>
+        <label for="message" class="block font-semibold text-slate-700 mb-1">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Your message" required class="w-full border border-blue-200 rounded px-3 py-2 focus:outline-none focus:border-blue-500 bg-blue-50 placeholder-slate-400"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-400 to-blue-700 text-white font-semibold py-2 rounded-lg shadow hover:from-blue-500 hover:to-blue-800 transition">Send</button>
+    </form>
+    {% if success %}
+      <div id="successMsg" class="text-green-700 text-center text-base font-semibold mt-4">Thanks for reaching out! We'll get back to you shortly.</div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

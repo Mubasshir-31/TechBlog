@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-4 py-8" style="max-width:900px;">
+  <h1 class="text-2xl font-bold mb-6 text-blue-700">Contact Messages</h1>
+  {% if messages %}
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-blue-200 rounded-lg">
+        <thead>
+          <tr class="bg-blue-50">
+            <th class="py-2 px-4 border-b text-blue-600">Name</th>
+            <th class="py-2 px-4 border-b text-blue-600">Email</th>
+            <th class="py-2 px-4 border-b text-blue-600">Message</th>
+            <th class="py-2 px-4 border-b text-blue-600">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for msg in messages %}
+          <tr class="border-b hover:bg-blue-50">
+            <td class="py-2 px-4">{{ msg.name }}</td>
+            <td class="py-2 px-4">{{ msg.email }}</td>
+            <td class="py-2 px-4">{{ msg.message }}</td>
+            <td class="py-2 px-4">{{ msg.date.strftime('%Y-%m-%d %H:%M') if msg.date and msg.date.__class__.__name__ == 'datetime' else msg.date }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="text-slate-600">No messages found.</p>
+  {% endif %}
+</div>
+{% endblock %} 
